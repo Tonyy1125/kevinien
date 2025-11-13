@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Le Safwanis - Restaurant Indien</title>
+  <style>
+    /* --- STYLES GÉNÉRAUX --- */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: "Poppins", sans-serif;
+      background-color: #fff8f0;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* --- EN-TÊTE / NAVIGATION --- */
+    header {
+      background-color: #8b0000;
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    header h1 {
+      font-size: 1.8rem;
+      font-family: "Georgia", serif;
+    }
+
+    nav a {
+      margin-left: 1.5rem;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: #ffcc66;
+    }
+
+    /* --- SECTION HÉRO --- */
+    .hero {
+      background: url('https://images.unsplash.com/photo-1600628422019-90d99a99902b') center/cover no-repeat;
+      height: 80vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      text-align: center;
+      position: relative;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background-color: rgba(0,0,0,0.5);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 600px;
+    }
+
+    .hero h2 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
+    }
+
+    .btn {
+      background-color: #ffcc66;
+      color: #8b0000;
+      padding: 0.8rem 1.5rem;
+      border: none;
+      border-radius: 5px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .btn:hover {
+      background-color: #ffd98e;
+    }
+
+    /* --- À PROPOS --- */
+    section {
+      padding: 4rem 2rem;
+      text-align: center;
+    }
+
+    #about {
+      background-color: #fff0e6;
+    }
+
+    #about h2 {
+      color: #8b0000;
+      margin-bottom: 1rem;
+    }
+
+    #about p {
+      max-width: 700px;
+      margin: 0 auto;
+      font-size: 1.1rem;
+    }
+
+    /* --- MENU --- */
+    #menu {
+      background-color: #fff8f0;
+    }
+
+    #menu h2 {
+      color: #8b0000;
+      margin-bottom: 2rem;
+    }
+
+    .menu-items {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .menu-item {
+      background-color: white;
+      border-radius: 10px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      padding: 1rem;
+    }
+
+    .menu-item img {
+      width: 100%;
+      border-radius: 10px;
+      height: 180px;
+      object-fit: cover;
+    }
+
+    .menu-item h3 {
+      color: #8b0000;
+      margin: 0.8rem 0 0.3rem;
+    }
+
+    /* --- CONTACT --- */
+    #contact {
+      background-color: #8b0000;
+      color: white;
+    }
+
+    #contact h2 {
+      margin-bottom: 1rem;
+    }
+
+    #contact p {
+      margin: 0.3rem 0;
+    }
+
+    footer {
+      background-color: #5a0000;
+      color: #ffcc66;
+      text-align: center;
+      padding: 1rem;
+      font-size: 0.9rem;
+    }
+
+    /* --- RESPONSIVE --- */
+    @media (max-width: 768px) {
+      .hero h2 {
+        font-size: 2rem;
+      }
+      header {
+        flex-direction: column;
+      }
+      nav a {
+        display: inline-block;
+        margin: 0.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Le Safwanis</h1>
+    <nav>
+      <a href="#about">À propos</a>
+      <a href="#menu">Menu</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="hero-content">
+      <h2>Saveurs authentiques de l’Inde ????</h2>
+      <p>Découvrez nos plats épicés, préparés avec passion et tradition.</p>
+      <a href="#menu" class="btn">Voir le menu</a>
+    </div>
+  </section>
+
+  <section id="about">
+    <h2>À propos de nous</h2>
+    <p>
+      Bienvenue au <strong>Safwanis</strong>, un restaurant indien qui vous invite à un voyage culinaire unique.  
+      Nous sélectionnons des ingrédients frais et des épices venues directement d’Inde pour offrir une expérience riche en goûts et en couleurs.
+    </p>
+  </section>
+
+  <section id="menu">
+    <h2>Notre Menu</h2>
+    <div class="menu-items">
+      <div class="menu-item">
+        <img src="https://images.unsplash.com/photo-1627308595229-7830a5c91f9f" alt="Poulet Tikka Masala">
+        <h3>Poulet Tikka Masala</h3>
+        <p>Poulet mariné et mijoté dans une sauce crémeuse et épicée.</p>
+      </div>
+      <div class="menu-item">
+        <img src="https://images.unsplash.com/photo-1626203274557-44b5b0541c5d" alt="Biryani">
+        <h3>Biryani Royal</h3>
+        <p>Riz basmati parfumé aux épices, servi avec agneau ou légumes.</p>
+      </div>
+      <div class="menu-item">
+        <img src="https://images.unsplash.com/photo-1603030931309-01a48f9d70a5" alt="Naan au fromage">
+        <h3>Naan au Fromage</h3>
+        <p>Pain traditionnel indien, moelleux et garni de fromage fondant.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <h2>Nous contacter</h2>
+    <p>?? 12 Rue des Épices, 75010 Paris</p>
+    <p>?? 01 23 45 67 89</p>
+    <p>?? contact@lesafwanis.fr</p>
+    <p>?? Ouvert du mardi au dimanche, de 11h30 à 23h00</p>
+  </section>
+
+  <footer>
+    &copy; 2025 Le Safwanis — Tous droits réservés.
+  </footer>
+
+</body>
+</html>
