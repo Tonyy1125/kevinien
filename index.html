@@ -148,6 +148,40 @@
             margin-top: 40px;
         }
 
+        /* === MINI-JEU MENU === */
+        #ingredientGame {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(0,0,0,0.9);
+            display: none;
+            z-index: 99999;
+            text-align: center;
+            padding-top: 60px;
+        }
+
+        .ingredient {
+            display: inline-block;
+            width: 120px;
+            height: 120px;
+            margin: 15px;
+            background-color: #fff;
+            border-radius: 10px;
+            line-height: 120px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: #111;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        #ingredientLost {
+            display: none;
+            margin-top: 40px;
+        }
+
         .lostButton {
             background: #ff0000;
             padding: 15px 25px;
@@ -159,8 +193,10 @@
             margin-top: 20px;
         }
 
-        #gameInfo {
+        #ingredientInfo {
             font-size: 1.8rem;
+            color: #fff;
+            margin-bottom: 20px;
         }
 
     </style>
@@ -176,7 +212,7 @@
 
 <nav>
     <a id="accueilBtn" href="#">Accueil</a>
-    <a href="#menu">Menu</a>
+    <a id="menuBtn" href="#">Menu</a>
     <a href="#contact">Contact</a>
 </nav>
 
@@ -213,7 +249,7 @@
     <p>📞 Téléphone : 01 23 45 67 89</p>
 </section>
 
-<!-- === MINI-JEU CLIQUE RAPIDE SUR ACCUEIL === -->
+<!-- === MINI-JEU ACCUEIL === -->
 <div id="clickGame">
     <h2>CLIQUE LE PLUS VITE POSSIBLE ! 🍜</h2>
     <div id="gameInfo">Clics demandés : 1 / seconde</div>
@@ -224,11 +260,23 @@
     </div>
 </div>
 
+<!-- === MINI-JEU MENU === -->
+<div id="ingredientGame">
+    <h2>PRÉPARE LE RAMEN ! 🍜</h2>
+    <div id="ingredientInfo">Cliquez sur les bons ingrédients : Soupe Miso, Eau</div>
+    <div id="ingredientContainer"></div>
+    <div id="ingredientLost">
+        <h1>😵 Mauvais ingrédient !</h1>
+        <button class="lostButton" id="ingredientRetry">Recommencer</button>
+    </div>
+</div>
+
 <footer>
     © 2025 Le Kevinien – Tous droits réservés
 </footer>
 
 <script>
+    /* === MINI-JEU ACCUEIL === */
     const accueilBtn = document.getElementById("accueilBtn");
     const clickGame = document.getElementById("clickGame");
     const ramenClick = document.getElementById("ramenClick");
@@ -240,16 +288,14 @@
     let clicksRequired = 1;
     let gameInterval = null;
 
-    // Lance le jeu quand on clique sur Accueil
     accueilBtn.addEventListener("click", function(e){
-        e.preventDefault(); // Empêche le lien de naviguer
+        e.preventDefault();
         clickGame.style.display = "block";
         startClickGame();
     });
 
     function startClickGame() {
         resetGame();
-        // Vérifie chaque seconde si le joueur clique assez vite
         gameInterval = setInterval(() => {
             if (clicks < clicksRequired) {
                 lose();
@@ -266,7 +312,6 @@
         clicksRequired = 1;
         lostScreen.style.display = "none";
         info.textContent = "Clics demandés : 1 / seconde";
-
         if (gameInterval) clearInterval(gameInterval);
     }
 
@@ -275,13 +320,59 @@
         lostScreen.style.display = "block";
     }
 
-    ramenClick.addEventListener("click", () => {
-        clicks++;
+    ramenClick.addEventListener("click", () => { clicks++; });
+    retryBtn.addEventListener("click", () => { startClickGame(); });
+
+    /* === MINI-JEU MENU === */
+    const menuBtn = document.getElementById("menuBtn");
+    const ingredientGame = document.getElementById("ingredientGame");
+    const ingredientContainer = document.getElementById("ingredientContainer");
+    const ingredientLost = document.getElementById("ingredientLost");
+    const ingredientRetry = document.getElementById("ingredientRetry");
+
+    const ingredients = [
+        {name: "Soupe Miso", good: true},
+        {name: "Eau", good: true},
+        {name: "Tomate", good: false},
+        {name: "Chocolat", good: false},
+        {name: "Bière", good: false},
+        {name: "Nouilles", good: true},
+        {name: "Poisson", good: false},
+    ];
+
+    menuBtn.addEventListener("click", function(e){
+        e.preventDefault();
+        ingredientGame.style.display = "block";
+        startIngredientGame();
     });
 
-    retryBtn.addEventListener("click", () => {
-        startClickGame();
-    });
+    function startIngredientGame() {
+        ingredientContainer.innerHTML = '';
+        ingredientLost.style.display = "none";
+
+        // Affiche 5 ingrédients aléatoires
+        let shuffled = ingredients.sort(() => 0.5 - Math.random());
+        let displayed = shuffled.slice(0, 5);
+
+        displayed.forEach(ing => {
+            const div = document.createElement("div");
+            div.className = "ingredient";
+            div.textContent = ing.name;
+            div.dataset.good = ing.good;
+            div.addEventListener("click", () => {
+                if (ing.good === false) {
+                    ingredientLost.style.display = "block";
+                } else {
+                    div.style.backgroundColor = "#0f0";
+                    div.style.color = "#000";
+                }
+            });
+            ingredientContainer.appendChild(div);
+        });
+    }
+
+    ingredientRetry.addEventListener("click", () => { startIngredientGame(); });
+
 </script>
 
 </body>
