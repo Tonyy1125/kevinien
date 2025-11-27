@@ -6,146 +6,147 @@
 <title>Le Kevinien – Restaurant Chinois</title>
 
 <style>
-    body {
-        margin: 0;
-        font-family: "Segoe UI", sans-serif;
-        background-color: #111;
-        color: #fff;
-        cursor: url('https://pngimg.com/uploads/dragon/dragon_PNG17.png'), auto;
-    }
+body {
+    margin: 0;
+    font-family: "Segoe UI", sans-serif;
+    background-color: #111;
+    color: #fff;
+    cursor: url('https://pngimg.com/uploads/dragon/dragon_PNG17.png'), auto;
+}
 
-    header {
-        background-color: #b30000;
-        padding: 20px;
-        text-align: center;
-        position: relative;
-    }
+header {
+    background-color: #b30000;
+    padding: 20px;
+    text-align: center;
+    position: relative;
+}
 
-    header h1 {
-        font-size: 3rem;
-        margin: 0;
-        text-shadow: 3px 3px 5px #000;
-    }
+header h1 {
+    font-size: 3rem;
+    margin: 0;
+    text-shadow: 3px 3px 5px #000;
+}
 
-    .dragon {
-        position: absolute;
-        top: -10px;
-        left: 10px;
-        width: 120px;
-        opacity: 0.7;
-    }
+nav {
+    background-color: #000;
+    padding: 15px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+}
 
-    .dragon-right {
-        right: 10px;
-        left: auto;
-        transform: scaleX(-1);
-    }
+nav a {
+    color: #ff4444;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 10px 20px;
+    border: 2px solid #ff0000;
+    border-radius: 8px;
+    transition: 0.25s;
+}
 
-    nav {
-        background-color: #000;
-        padding: 15px;
-        text-align: center;
-        display: flex;
-        justify-content: center;
-        gap: 25px;
-    }
+nav a:hover {
+    background-color: #ff0000;
+    color: white;
+    transform: scale(1.1);
+    box-shadow: 0 0 10px #ff0000;
+}
 
-    nav a {
-        color: #ff4444;
-        text-decoration: none;
-        font-weight: bold;
-        padding: 10px 20px;
-        border: 2px solid #ff0000;
-        border-radius: 8px;
-        transition: 0.25s;
-    }
+.section {
+    padding: 40px;
+    text-align: center;
+}
 
-    nav a:hover {
-        background-color: #ff0000;
-        color: white;
-        transform: scale(1.1);
-        box-shadow: 0 0 10px #ff0000;
-    }
+footer {
+    background-color: #000;
+    padding: 20px;
+    text-align: center;
+    color: #777;
+    margin-top: 40px;
+}
 
-    .section {
-        padding: 40px;
-        text-align: center;
-    }
+/* === Fenêtre d'identification === */
+#identificationMenu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0,0,0,0.95);
+    opacity: 0;
+    pointer-events: none;
+    text-align: center;
+    padding-top: 100px;
+    transition: opacity 0.5s ease;
+    z-index: 9999;
+}
 
-    footer {
-        background-color: #000;
-        padding: 20px;
-        text-align: center;
-        color: #777;
-        margin-top: 40px;
-    }
+#identificationMenu.show {
+    opacity: 1;
+    pointer-events: auto;
+}
 
-    /* === Fenêtre d'identification === */
-    #identificationMenu {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100vw;
-        height: 100vh;
-        background: rgba(0,0,0,0.95);
-        display: none;
-        z-index: 9999;
-        text-align: center;
-        padding-top: 100px;
-        opacity: 0;
-        transition: opacity 0.5s ease;
-    }
+#identificationMenu h2 {
+    color: #ff4444;
+    font-size: 2rem;
+    margin-bottom: 30px;
+}
 
-    #identificationMenu.show {
-        display: block;
-        opacity: 1;
-    }
+.userBtn {
+    display: inline-block;
+    margin: 15px;
+    padding: 15px 25px;
+    background-color: #1a1a1a;
+    border: 2px solid #ff0000;
+    border-radius: 10px;
+    color: #fff;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: 0.25s;
+}
 
-    #identificationMenu h2 {
-        color: #ff4444;
-        font-size: 2rem;
-        margin-bottom: 30px;
-    }
+.userBtn:hover {
+    background-color: #ff0000;
+    color: white;
+    transform: scale(1.1);
+    box-shadow: 0 0 10px #ff0000;
+}
 
-    .userBtn {
-        display: inline-block;
-        margin: 15px;
-        padding: 15px 25px;
-        background-color: #1a1a1a;
-        border: 2px solid #ff0000;
-        border-radius: 10px;
-        color: #fff;
-        font-size: 1.2rem;
-        cursor: pointer;
-        transition: 0.25s;
-    }
+#message {
+    margin-top: 40px;
+    font-size: 1.5rem;
+    color: #fff;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
 
-    .userBtn:hover {
-        background-color: #ff0000;
-        color: white;
-        transform: scale(1.1);
-        box-shadow: 0 0 10px #ff0000;
-    }
+#message.show {
+    opacity: 1;
+}
 
-    #message {
-        margin-top: 40px;
-        font-size: 1.5rem;
-        color: #fff;
-        opacity: 0;
-        transition: opacity 0.5s ease;
-    }
+#closeMenu {
+    display: block;
+    margin: 30px auto 0;
+    padding: 10px 20px;
+    font-size: 1rem;
+    cursor: pointer;
+    background-color: #ff0000;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    transition: 0.25s;
+}
 
-    #message.show {
-        opacity: 1;
-    }
+#closeMenu:hover {
+    background-color: #ff4444;
+}
 </style>
 </head>
 
 <body>
 
 <header>
-    <img src="https://pngimg.com/uploads/dragon/dragon_PNG17.png" class="dragon">
-    <img src="https://pngimg.com/uploads/dragon/dragon_PNG17.png" class="dragon dragon-right">
     <h1>Le Kevinien</h1>
 </header>
 
@@ -172,43 +173,52 @@
     <button class="userBtn" data-user="kevin">Kevin</button>
     <button class="userBtn" data-user="anthony">Anthony</button>
     <div id="message"></div>
+    <button id="closeMenu">Fermer</button>
 </div>
 
 <script>
-    const contactBtn = document.getElementById("contactBtn");
-    const identificationMenu = document.getElementById("identificationMenu");
-    const messageEl = document.getElementById("message");
-    const userBtns = document.querySelectorAll(".userBtn");
+const contactBtn = document.getElementById("contactBtn");
+const identificationMenu = document.getElementById("identificationMenu");
+const messageEl = document.getElementById("message");
+const userBtns = document.querySelectorAll(".userBtn");
+const closeMenuBtn = document.getElementById("closeMenu");
 
-    contactBtn.addEventListener("click", e => {
-        e.preventDefault();
-        identificationMenu.classList.add("show");
-        messageEl.classList.remove("show");
-        messageEl.textContent = "";
-    });
+// Ouvre le menu avec animation
+contactBtn.addEventListener("click", e => {
+    e.preventDefault();
+    identificationMenu.classList.add("show");
+    messageEl.classList.remove("show");
+    messageEl.textContent = "";
+});
 
-    userBtns.forEach(btn => {
-        btn.addEventListener("click", () => {
-            const user = btn.dataset.user.toLowerCase();
-            let msg = "";
-            switch(user) {
-                case "matteo":
-                    msg = "Salut le goat, prends un menu c'est gratuit pour toi bébé !";
-                    break;
-                case "alexis":
-                    msg = "Commande bichon !";
-                    break;
-                case "kevin":
-                    msg = "Ferme la page et ta gueule sale zjfcbsif !";
-                    break;
-                case "anthony":
-                    msg = "Bonjour chef... ouverture du panel d'admin !";
-                    break;
-            }
-            messageEl.textContent = msg;
-            messageEl.classList.add("show");
-        });
+// Message selon l'utilisateur
+userBtns.forEach(btn => {
+    btn.addEventListener("click", () => {
+        const user = btn.dataset.user.toLowerCase();
+        let msg = "";
+        switch(user) {
+            case "matteo":
+                msg = "Salut le goat, prends un menu c'est gratuit pour toi bébé !";
+                break;
+            case "alexis":
+                msg = "Commande bichon !";
+                break;
+            case "kevin":
+                msg = "Ferme la page et ta gueule sale zjfcbsif !";
+                break;
+            case "anthony":
+                msg = "Bonjour chef... ouverture du panel d'admin !";
+                break;
+        }
+        messageEl.textContent = msg;
+        messageEl.classList.add("show");
     });
+});
+
+// Fermer le menu
+closeMenuBtn.addEventListener("click", () => {
+    identificationMenu.classList.remove("show");
+});
 </script>
 
 </body>
