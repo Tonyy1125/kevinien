@@ -40,7 +40,6 @@
             transform: scaleX(-1);
         }
 
-        /* BARRE DE NAVIGATION + effets */
         nav {
             background-color: #000;
             padding: 15px;
@@ -58,6 +57,7 @@
             border: 2px solid #ff0000;
             border-radius: 8px;
             transition: 0.25s;
+            cursor: pointer;
         }
 
         nav a:hover {
@@ -65,11 +65,6 @@
             color: white;
             transform: scale(1.1);
             box-shadow: 0 0 10px #ff0000;
-        }
-
-        nav a:active {
-            transform: scale(0.95);
-            box-shadow: 0 0 5px #ff5555 inset;
         }
 
         .hero {
@@ -95,7 +90,6 @@
             text-align: center;
         }
 
-        /* PHOTO DU CHEF */
         .chef-photo {
             width: 300px;
             border-radius: 10px;
@@ -104,7 +98,6 @@
             margin-top: 20px;
         }
 
-        /* Carte des plats */
         .menu-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -120,17 +113,50 @@
             box-shadow: 0 0 10px #ff0000;
         }
 
-        .menu-item h3 {
-            margin: 0;
-            color: #ff4444;
-        }
-
         footer {
             background-color: #000;
             padding: 20px;
             text-align: center;
             color: #777;
             margin-top: 40px;
+        }
+
+        /* 🎮 MINI-JEUX RAMEN */
+        #ramenGame {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(0,0,0,0.85);
+            display: none;
+            overflow: hidden;
+            z-index: 9999;
+            text-align: center;
+        }
+
+        #closeGame {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: #ff0000;
+            border: none;
+            color: white;
+            padding: 10px 15px;
+            cursor: pointer;
+            font-size: 1.2rem;
+            border-radius: 5px;
+        }
+
+        #score {
+            font-size: 2rem;
+            margin-top: 20px;
+        }
+
+        .ramen {
+            position: absolute;
+            width: 70px;
+            cursor: pointer;
         }
     </style>
 </head>
@@ -146,7 +172,7 @@
 <nav>
     <a href="#accueil">Accueil</a>
     <a href="#menu">Menu</a>
-    <a href="#contact">Contact</a>
+    <a id="contactBtn">Contact</a>
 </nav>
 
 <section class="hero" id="accueil">
@@ -156,8 +182,6 @@
 <section class="section">
     <h2>Notre Chef</h2>
     <p>Voici notre chef cuisinier, spécialiste des ramens et plats asiatiques.</p>
-
-    <!-- PHOTO D’UN CHEF ASIATIQUE (libre de droit, Unsplash) -->
     <img class="chef-photo" src="https://images.unsplash.com/photo-1551218808-94e220e084d2" alt="Chef asiatique">
 </section>
 
@@ -179,15 +203,69 @@
     </div>
 </section>
 
-<section class="section" id="contact">
-    <h2>Contact</h2>
-    <p>📍 Adresse : 12 rue du Bombini Gusini, Paris</p>
-    <p>📞 Téléphone : 01 23 45 67 89</p>
-</section>
+<!-- 🎮 MINI-JEUX RAMEN -->
+<div id="ramenGame">
+    <button id="closeGame">Fermer</button>
+    <h2>Attrape les Ramens ! 🍜</h2>
+    <div id="score">Score : 0</div>
+</div>
 
 <footer>
     © 2025 Le Kevinien – Tous droits réservés
 </footer>
 
+<script>
+    const contactBtn = document.getElementById("contactBtn");
+    const ramenGame = document.getElementById("ramenGame");
+    const closeGame = document.getElementById("closeGame");
+    const scoreDisplay = document.getElementById("score");
+
+    let score = 0;
+
+    contactBtn.addEventListener("click", () => {
+        ramenGame.style.display = "block";
+        startGame();
+    });
+
+    closeGame.addEventListener("click", () => {
+        ramenGame.style.display = "none";
+        document.querySelectorAll(".ramen").forEach(r => r.remove());
+        score = 0;
+        scoreDisplay.textContent = "Score : 0";
+    });
+
+    function startGame() {
+        setInterval(() => {
+            createRamen();
+        }, 800);
+    }
+
+    function createRamen() {
+        const ramen = document.createElement("img");
+        ramen.src = "https://pngimg.com/uploads/ramen/ramen_PNG53.png";
+        ramen.classList.add("ramen");
+
+        ramen.style.left = Math.random() * (window.innerWidth - 100) + "px";
+        ramen.style.top = "-80px";
+
+        ramenGame.appendChild(ramen);
+
+        ramen.addEventListener("click", () => {
+            score++;
+            scoreDisplay.textContent = "Score : " + score;
+            ramen.remove();
+        });
+
+        let fall = setInterval(() => {
+            ramen.style.top = (parseInt(ramen.style.top) + 5) + "px";
+            if (parseInt(ramen.style.top) > window.innerHeight) {
+                ramen.remove();
+                clearInterval(fall);
+            }
+        }, 30);
+    }
+</script>
+
 </body>
 </html>
+
