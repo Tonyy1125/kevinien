@@ -5,7 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Le Kevinien – Restaurant Chinois</title>
 <style>
-/* === GLOBAL === */
 body {
     margin: 0;
     font-family: "Segoe UI", sans-serif;
@@ -18,7 +17,6 @@ header {
     background-color: #b30000;
     padding: 20px;
     text-align: center;
-    position: relative;
 }
 
 header h1 {
@@ -107,7 +105,7 @@ footer {
     margin-top: 40px;
 }
 
-/* === MENU D'IDENTIFICATION === */
+/* === MENU IDENTIFICATION === */
 #identificationMenu {
     position: fixed;
     top: 0;
@@ -115,12 +113,14 @@ footer {
     width: 100vw;
     height: 100vh;
     background: rgba(0,0,0,0.95);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     opacity: 0;
     pointer-events: none;
-    text-align: center;
-    padding-top: 100px;
     transition: opacity 0.5s ease;
-    z-index: 9999;
+    z-index: 1000;
 }
 
 #identificationMenu.show {
@@ -136,7 +136,7 @@ footer {
 
 .userBtn {
     display: inline-block;
-    margin: 15px;
+    margin: 10px;
     padding: 15px 25px;
     background-color: #1a1a1a;
     border: 2px solid #ff0000;
@@ -155,20 +155,20 @@ footer {
 }
 
 #message {
-    margin-top: 40px;
+    margin-top: 30px;
     font-size: 1.5rem;
     color: #fff;
     opacity: 0;
-    transition: opacity 0.5s ease;
+    transition: opacity 0.5s ease, transform 0.5s ease;
 }
 
 #message.show {
     opacity: 1;
+    transform: translateY(0);
 }
 
 #closeMenu {
-    display: block;
-    margin: 30px auto 0;
+    margin-top: 40px;
     padding: 10px 20px;
     font-size: 1rem;
     cursor: pointer;
@@ -176,7 +176,6 @@ footer {
     color: #fff;
     border: none;
     border-radius: 5px;
-    transition: 0.25s;
 }
 
 #closeMenu:hover {
@@ -184,12 +183,9 @@ footer {
 }
 </style>
 </head>
-
 <body>
 
 <header>
-    <img src="https://pngimg.com/uploads/dragon/dragon_PNG17.png" class="dragon">
-    <img src="https://pngimg.com/uploads/dragon/dragon_PNG17.png" class="dragon dragon-right">
     <h1>Le Kevinien</h1>
 </header>
 
@@ -230,7 +226,7 @@ footer {
     © 2025 Le Kevinien – Tous droits réservés
 </footer>
 
-<!-- === Menu d'identification === -->
+<!-- Menu identification -->
 <div id="identificationMenu">
     <h2>Veuillez vous identifier :</h2>
     <button class="userBtn" data-user="matteo">Matteo</button>
@@ -248,32 +244,24 @@ const messageEl = document.getElementById("message");
 const userBtns = document.querySelectorAll(".userBtn");
 const closeMenuBtn = document.getElementById("closeMenu");
 
-// Ouvre le menu avec animation
+// Ouvrir le menu
 contactBtn.addEventListener("click", e => {
     e.preventDefault();
     identificationMenu.classList.add("show");
-    messageEl.classList.remove("show");
     messageEl.textContent = "";
+    messageEl.classList.remove("show");
 });
 
-// Message selon l'utilisateur
+// Afficher message selon l'utilisateur
 userBtns.forEach(btn => {
     btn.addEventListener("click", () => {
         const user = btn.dataset.user.toLowerCase();
         let msg = "";
         switch(user) {
-            case "matteo":
-                msg = "Salut le goat, prends un menu c'est gratuit pour toi bébé !";
-                break;
-            case "alexis":
-                msg = "Commande bichon !";
-                break;
-            case "kevin":
-                msg = "Ferme la page et ta gueule sale zjfcbsif !";
-                break;
-            case "anthony":
-                msg = "Bonjour chef... ouverture du panel d'admin !";
-                break;
+            case "matteo": msg = "Salut le goat, prends un menu c'est gratuit pour toi bébé !"; break;
+            case "alexis": msg = "Commande bichon !"; break;
+            case "kevin": msg = "Ferme la page et ta gueule sale zjfcbsif !"; break;
+            case "anthony": msg = "Bonjour chef... ouverture du panel d'admin !"; break;
         }
         messageEl.textContent = msg;
         messageEl.classList.add("show");
@@ -285,6 +273,5 @@ closeMenuBtn.addEventListener("click", () => {
     identificationMenu.classList.remove("show");
 });
 </script>
-
 </body>
 </html>
