@@ -92,6 +92,13 @@
         z-index: 9999;
         text-align: center;
         padding-top: 100px;
+        opacity: 0;
+        transition: opacity 0.5s ease;
+    }
+
+    #identificationMenu.show {
+        display: block;
+        opacity: 1;
     }
 
     #identificationMenu h2 {
@@ -124,6 +131,12 @@
         margin-top: 40px;
         font-size: 1.5rem;
         color: #fff;
+        opacity: 0;
+        transition: opacity 0.5s ease;
+    }
+
+    #message.show {
+        opacity: 1;
     }
 </style>
 </head>
@@ -169,29 +182,31 @@
 
     contactBtn.addEventListener("click", e => {
         e.preventDefault();
-        identificationMenu.style.display = "block";
+        identificationMenu.classList.add("show");
+        messageEl.classList.remove("show");
         messageEl.textContent = "";
     });
 
     userBtns.forEach(btn => {
         btn.addEventListener("click", () => {
             const user = btn.dataset.user.toLowerCase();
+            let msg = "";
             switch(user) {
                 case "matteo":
-                    messageEl.textContent = "Salut le goat, prends un menu c'est gratuit pour toi bébé !";
+                    msg = "Salut le goat, prends un menu c'est gratuit pour toi bébé !";
                     break;
                 case "alexis":
-                    messageEl.textContent = "Commande bichon !";
+                    msg = "Commande bichon !";
                     break;
                 case "kevin":
-                    messageEl.textContent = "Ferme la page et ta gueule sale zjfcbsif !";
+                    msg = "Ferme la page et ta gueule sale zjfcbsif !";
                     break;
                 case "anthony":
-                    messageEl.textContent = "Bonjour chef... ouverture du panel d'admin !";
+                    msg = "Bonjour chef... ouverture du panel d'admin !";
                     break;
-                default:
-                    messageEl.textContent = "";
             }
+            messageEl.textContent = msg;
+            messageEl.classList.add("show");
         });
     });
 </script>
