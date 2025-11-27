@@ -25,7 +25,6 @@
             text-shadow: 3px 3px 5px #000;
         }
 
-        /* Dragon décoratif */
         .dragon {
             position: absolute;
             top: -10px;
@@ -61,7 +60,7 @@
             background-image: url("https://images.unsplash.com/photo-1604908177225-e1e04f02c5a8");
             background-size: cover;
             background-position: center;
-            height: 400px;
+            height: 350px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -79,6 +78,31 @@
         .section {
             padding: 40px;
             text-align: center;
+        }
+
+        /* Carte des plats */
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .menu-item {
+            background-color: #1a1a1a;
+            padding: 20px;
+            border: 2px solid #ff0000;
+            border-radius: 10px;
+            box-shadow: 0 0 10px #ff0000;
+        }
+
+        .menu-item h3 {
+            margin: 0;
+            color: #ff4444;
+        }
+
+        .menu-item p {
+            margin: 10px 0 0;
         }
 
         .ramen-img {
@@ -113,18 +137,60 @@
 </nav>
 
 <section class="hero" id="accueil">
-    <h2>Bienvenue au restaurant chinois Le Kevinien par kevin le vietnamien</h2>
+    <h2>Bienvenue au restaurant chinois Le Kevinien par kevin le vietnamien salé</h2>
 </section>
 
 <section class="section" id="menu">
-    <h2>Nos Ramens</h2>
-    <p>Découvrez nos délicieux ramens faits maison !</p>
-    <img class="ramen-img" src="https://images.unsplash.com/photo-1605478371335-27bb0f963464" alt="Bol de ramen">
+    <h2>Notre Carte</h2>
+    <p>Découvrez nos spécialités asiatiques 🍜🐉</p>
+
+    <div class="menu-grid">
+        <div class="menu-item">
+            <h3>Ramen Classique</h3>
+            <p>10,90 € – Bouillon maison et nouilles fraîches.</p>
+        </div>
+        <div class="menu-item">
+            <h3>Ramen au Poulet</h3>
+            <p>12,50 € – Poulet rôti et légumes croquants.</p>
+        </div>
+        <div class="menu-item">
+            <h3>Ramen Épicé du Dragon</h3>
+            <p>13,90 € – Pour les amateurs de sensations fortes.</p>
+        </div>
+        <div class="menu-item">
+            <h3>Nouilles Sautées</h3>
+            <p>11,50 € – Sauce soja maison.</p>
+        </div>
+        <div class="menu-item">
+            <h3>Boeuf Szechuan</h3>
+            <p>14,90 € – Saveurs authentiques et relevées.</p>
+        </div>
+        <div class="menu-item">
+            <h3>Riz Cantonais</h3>
+            <p>9,50 € – Classique incontournable.</p>
+        </div>
+        <div class="menu-item">
+            <h3>Poulet Général Tao</h3>
+            <p>13,50 € – Croustillant et sucré-salé.</p>
+        </div>
+        <div class="menu-item">
+            <h3>Crevettes Impériales</h3>
+            <p>15,90 € – Fraîches et légèrement épicées.</p>
+        </div>
+        <div class="menu-item">
+            <h3>Soupe Miso</h3>
+            <p>6,50 € – Tradition japonaise.</p>
+        </div>
+        <div class="menu-item">
+            <h3>Gyozas Maison</h3>
+            <p>8,90 € – Raviolis grillés faits maison.</p>
+        </div>
+    </div>
 </section>
 
 <section class="section" id="contact">
     <h2>Contact</h2>
-    <p>📍 Adresse : 12 rue du TATATASAHURRRR, Paris</p>
+    <p>📍 Adresse : 12 rue du Brr bRr patapim, Paris</p>
     <p>📞 Téléphone : 01 23 45 67 89</p>
 </section>
 
