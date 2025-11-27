@@ -26,6 +26,20 @@
             text-shadow: 3px 3px 5px #000;
         }
 
+        .dragon {
+            position: absolute;
+            top: -10px;
+            left: 10px;
+            width: 120px;
+            opacity: 0.7;
+        }
+
+        .dragon-right {
+            right: 10px;
+            left: auto;
+            transform: scaleX(-1);
+        }
+
         nav {
             background-color: #000;
             padding: 15px;
@@ -51,6 +65,60 @@
             color: white;
             transform: scale(1.1);
             box-shadow: 0 0 10px #ff0000;
+        }
+
+        .hero {
+            background-image: url("https://images.unsplash.com/photo-1604908177225-e1e04f02c5a8");
+            background-size: cover;
+            background-position: center;
+            height: 350px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero h2 {
+            background: rgba(0, 0, 0, 0.6);
+            padding: 20px 40px;
+            border: 2px solid #ff0000;
+            border-radius: 10px;
+            font-size: 2.5rem;
+        }
+
+        .section {
+            padding: 40px;
+            text-align: center;
+        }
+
+        .chef-photo {
+            width: 300px;
+            border-radius: 10px;
+            border: 3px solid #ff0000;
+            box-shadow: 0 0 15px #ff0000;
+            margin-top: 20px;
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .menu-item {
+            background-color: #1a1a1a;
+            padding: 20px;
+            border: 2px solid #ff0000;
+            border-radius: 10px;
+            box-shadow: 0 0 10px #ff0000;
+        }
+
+        footer {
+            background-color: #000;
+            padding: 20px;
+            text-align: center;
+            color: #777;
+            margin-top: 40px;
         }
 
         /* === MINI-JEU ACCUEIL === */
@@ -92,12 +160,15 @@
         #gameInfo {
             font-size: 1.8rem;
         }
+
     </style>
 </head>
 
 <body>
 
 <header>
+    <img src="https://pngimg.com/uploads/dragon/dragon_PNG17.png" class="dragon">
+    <img src="https://pngimg.com/uploads/dragon/dragon_PNG17.png" class="dragon dragon-right">
     <h1>Le Kevinien</h1>
 </header>
 
@@ -107,16 +178,47 @@
     <a href="#contact">Contact</a>
 </nav>
 
-<!-- === MINI-JEU : CLIQUE RAPIDE === -->
+<section class="hero" id="accueilSection">
+    <h2>Bienvenue au restaurant chinois Le Kevinien</h2>
+</section>
+
+<section class="section">
+    <h2>Notre Chef</h2>
+    <p>Voici notre chef cuisinier, spécialiste des ramens et plats asiatiques.</p>
+    <img class="chef-photo" src="https://images.unsplash.com/photo-1551218808-94e220e084d2" alt="Chef asiatique">
+</section>
+
+<section class="section" id="menu">
+    <h2>Notre Carte</h2>
+    <p>Découvrez nos spécialités 🍜🐉</p>
+    <div class="menu-grid">
+        <div class="menu-item"><h3>Ramen Classique</h3><p>10,90 €</p></div>
+        <div class="menu-item"><h3>Ramen Poulet</h3><p>12,50 €</p></div>
+        <div class="menu-item"><h3>Ramen Épicé du Dragon</h3><p>13,90 €</p></div>
+        <div class="menu-item"><h3>Nouilles Sautées</h3><p>11,50 €</p></div>
+        <div class="menu-item"><h3>Boeuf Szechuan</h3><p>14,90 €</p></div>
+        <div class="menu-item"><h3>Riz Cantonais</h3><p>9,50 €</p></div>
+        <div class="menu-item"><h3>Poulet Général Tao</h3><p>13,50 €</p></div>
+        <div class="menu-item"><h3>Crevettes Impériales</h3><p>15,90 €</p></div>
+        <div class="menu-item"><h3>Soupe Miso</h3><p>6,50 €</p></div>
+        <div class="menu-item"><h3>Gyozas Maison</h3><p>8,90 €</p></div>
+    </div>
+</section>
+
+<section class="section" id="contact">
+    <h2>Contact</h2>
+    <p>📍 Adresse : 12 rue du Dragon Rouge, Paris</p>
+    <p>📞 Téléphone : 01 23 45 67 89</p>
+</section>
+
+<!-- === MINI-JEU CLIQUE RAPIDE SUR ACCUEIL === -->
 <div id="clickGame">
     <h2>CLIQUE LE PLUS VITE POSSIBLE ! 🍜</h2>
     <div id="gameInfo">Clics demandés : 1 / seconde</div>
-
     <img id="ramenClick" src="https://png.pngtree.com/png-clipart/20230927/original/pngtree-ramen-noodles-instant-food-png-image_13152582.png">
-
     <div id="lostScreen">
         <h1>😵 Perdu !</h1>
-        <button class="lostButton" id="retryBtn">Recommencer</button>
+        <button class="lostButton" id="retryBtn">Recommence tu pue la merde bahaha</button>
     </div>
 </div>
 
@@ -139,25 +241,21 @@
     // Lance le jeu quand on clique sur Accueil
     accueilBtn.addEventListener("click", function(e){
         e.preventDefault(); // Empêche le lien de naviguer
+        clickGame.style.display = "block";
         startClickGame();
     });
 
     function startClickGame() {
-        clickGame.style.display = "block";
         resetGame();
-
         // Vérifie chaque seconde si le joueur clique assez vite
         gameInterval = setInterval(() => {
-
             if (clicks < clicksRequired) {
                 lose();
                 return;
             }
-
             clicks = 0;
-            clicksRequired *= 2;    // Double la difficulté
+            clicksRequired *= 2;
             info.textContent = "Clics demandés : " + clicksRequired + " / seconde";
-
         }, 1000);
     }
 
