@@ -102,7 +102,7 @@
 </header>
 
 <nav>
-    <a id="accueilBtn">Accueil</a>
+    <a id="accueilBtn" href="#">Accueil</a>
     <a href="#menu">Menu</a>
     <a href="#contact">Contact</a>
 </nav>
@@ -125,7 +125,6 @@
 </footer>
 
 <script>
-
     const accueilBtn = document.getElementById("accueilBtn");
     const clickGame = document.getElementById("clickGame");
     const ramenClick = document.getElementById("ramenClick");
@@ -137,13 +136,17 @@
     let clicksRequired = 1;
     let gameInterval = null;
 
-    accueilBtn.addEventListener("click", startClickGame);
+    // Lance le jeu quand on clique sur Accueil
+    accueilBtn.addEventListener("click", function(e){
+        e.preventDefault(); // Empêche le lien de naviguer
+        startClickGame();
+    });
 
     function startClickGame() {
         clickGame.style.display = "block";
         resetGame();
 
-        // chaque seconde : on vérifie si le joueur clique assez vite
+        // Vérifie chaque seconde si le joueur clique assez vite
         gameInterval = setInterval(() => {
 
             if (clicks < clicksRequired) {
@@ -152,8 +155,7 @@
             }
 
             clicks = 0;
-            clicksRequired *= 2;    // difficulté x2 chaque seconde
-
+            clicksRequired *= 2;    // Double la difficulté
             info.textContent = "Clics demandés : " + clicksRequired + " / seconde";
 
         }, 1000);
@@ -180,7 +182,6 @@
     retryBtn.addEventListener("click", () => {
         startClickGame();
     });
-
 </script>
 
 </body>
