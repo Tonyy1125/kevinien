@@ -1,292 +1,177 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Le Sahur - Kevin Sahur</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Only Hands Elite | Basketball Club</title>
     <style>
-        /* Couleurs principales : bleu et vert */
-        :root {
-            --bleu: #0000FF;   /* bleu standard [web:1] */
-            --vert: #008000;   /* vert standard [web:1] */
-            --fond-clair: #f5f5f5;
-        }
-
         body {
             margin: 0;
-            font-family: Arial, sans-serif;
-            background-color: var(--fond-clair);
-            color: #222;
+            font-family: 'Arial', sans-serif;
+            background-color: #ffffff;
+            color: #1a1a1a;
         }
 
         header {
-            background: linear-gradient(90deg, var(--bleu), var(--vert));
+            background-color: #0055ff;
             color: white;
-            padding: 20px 40px;
+            text-align: center;
+            padding: 1rem 0;
         }
 
-        header h1 {
-            margin: 0;
-            font-size: 2rem;
+        .logo-section {
+            background-color: #ffffff;
+            text-align: center;
+            padding: 2rem 1rem;
+            border-bottom: 3px solid #0055ff;
         }
 
-        header p {
-            margin: 5px 0 0;
-            font-size: 0.95rem;
+        .logo-section svg {
+            width: 200px;
+            height: 200px;
         }
 
         nav {
-            background-color: #ffffff;
-            border-bottom: 2px solid var(--bleu);
-        }
-
-        nav ul {
-            list-style: none;
-            margin: 0;
-            padding: 10px 40px;
+            background-color: #003bb3;
             display: flex;
-            gap: 20px;
+            justify-content: center;
+            gap: 2rem;
+            padding: 1rem 0;
         }
 
         nav a {
+            color: white;
             text-decoration: none;
-            color: var(--bleu);
             font-weight: bold;
         }
 
         nav a:hover {
-            color: var(--vert);
-        }
-
-        main {
-            max-width: 1000px;
-            margin: 20px auto;
-            padding: 0 20px;
-        }
-
-        .section-titre {
-            border-left: 4px solid var(--vert);
-            padding-left: 10px;
-            margin-bottom: 10px;
-            color: var(--bleu);
-        }
-
-        .intro {
-            background-color: #ffffff;
-            border: 1px solid #ddd;
-            border-left: 4px solid var(--bleu);
-            padding: 15px 20px;
-            margin-bottom: 20px;
-        }
-
-        .bio {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-            background-color: #ffffff;
-            border-radius: 4px;
-            padding: 20px;
-            border: 1px solid #ddd;
-            margin-bottom: 20px;
-        }
-
-        .bio-texte {
-            flex: 2;
-            min-width: 250px;
-        }
-
-        .bio-texte h3 {
-            margin-top: 0;
-            color: var(--bleu);
-        }
-
-        .bio-infos {
-            margin-top: 10px;
-        }
-
-        .bio-portrait {
-            flex: 1;
-            min-width: 220px;
-            text-align: center;
-        }
-
-        .bio-portrait img {
-            max-width: 100%;
-            border-radius: 8px;
-            border: 3px solid var(--vert);
-        }
-
-        .galerie {
-            background-color: #ffffff;
-            border-radius: 4px;
-            padding: 20px;
-            border: 1px solid #ddd;
-            margin-bottom: 20px;
-        }
-
-        .galerie-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 15px;
-            margin-top: 10px;
-        }
-
-        .galerie-item {
-            overflow: hidden;
-            border-radius: 6px;
-            border: 2px solid var(--bleu);
-        }
-
-        .galerie-item img {
-            width: 100%;
-            height: 150px;
-            object-fit: cover;
-            display: block;
-        }
-
-        .galerie-item p {
-            margin: 0;
-            padding: 5px 8px;
-            background-color: var(--bleu);
-            color: white;
-            font-size: 0.85rem;
-        }
-
-        footer {
-            text-align: center;
-            padding: 15px;
-            font-size: 0.85rem;
-            background-color: var(--bleu);
-            color: white;
-            margin-top: 20px;
-        }
-
-        footer a {
-            color: #cceeff;
-            text-decoration: none;
-        }
-
-        footer a:hover {
             text-decoration: underline;
         }
 
-        @media (max-width: 600px) {
-            header, nav ul, main {
-                padding-left: 15px;
-                padding-right: 15px;
-            }
+        .hero {
+            background: linear-gradient(rgba(0, 85, 255, 0.8), rgba(0, 85, 255, 0.8)),
+                        url('basketball-court.jpg') center/cover no-repeat;
+            color: white;
+            text-align: center;
+            padding: 6rem 1rem;
+        }
 
-            nav ul {
-                flex-direction: column;
-                gap: 8px;
-            }
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .section {
+            padding: 4rem 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .section h2 {
+            color: #0055ff;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .roster {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 2rem;
+            text-align: center;
+        }
+
+        .player-card {
+            background-color: #f4f8ff;
+            border-radius: 8px;
+            padding: 1rem;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        footer {
+            background-color: #0055ff;
+            color: white;
+            text-align: center;
+            padding: 1.5rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            .hero h1 { font-size: 2rem; }
+            .logo-section svg { width: 150px; height: 150px; }
         }
     </style>
 </head>
 <body>
 
-<header>
-    <h1>Le Sahur</h1>
-    <p>Site de référence sur Kevin Sahur&nbsp;: biographie, projets, photos et plus encore.</p>
-</header>
+    <header>
+        <h1>Only Hands Elite</h1>
+        <p>Basketball Club | Est. 2025</p>
+    </header>
 
-<nav>
-    <ul>
-        <li><a href="#kevin">Kevin Sahur</a></li>
-        <li><a href="#infos">Informations</a></li>
-        <li><a href="#photos">Galerie photos</a></li>
-        <li><a href="#contact">Contact</a></li>
-    </ul>
-</nav>
-
-<main>
-    <section class="intro">
-        <h2 class="section-titre">Bienvenue sur Le Sahur</h2>
-        <p>
-            Ce site rassemble toutes les informations importantes sur Kevin Sahur&nbsp;: son parcours, 
-            ses centres d'intérêt et ses projets personnels et professionnels.
-        </p>
+    <!-- Team Logo Section -->
+    <section class="logo-section">
+        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+            <!-- Basketball -->
+            <circle cx="100" cy="100" r="85" fill="#0055ff" stroke="#ffffff" stroke-width="8"/>
+            <!-- Lines -->
+            <path d="M 100 15 Q 115 50 100 85 Q 85 120 100 155 M 15 100 Q 50 115 85 100 Q 120 85 155 100" 
+                  stroke="#ffffff" stroke-width="6" stroke-linecap="round" fill="none"/>
+            <!-- Text Arc -->
+            <path id="textArc" d="M 50,100 A 50,50 0 1 1 150,100 A 50,50 0 0 1 50,100" fill="none"/>
+            <text font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#ffffff">
+                <textPath href="#textArc" startOffset="25%">ONLY HANDS ELITE</textPath>
+            </text>
+        </svg>
+        <p style="color: #0055ff; font-weight: bold; margin-top: 1rem;">Est. 2025</p>
     </section>
 
-    <section id="kevin" class="bio">
-        <div class="bio-texte">
-            <h3>Qui est Kevin Sahur&nbsp;?</h3>
-            <p>
-                Kevin Sahur est un homme passionné par le numérique, les voyages et la découverte 
-                de nouvelles cultures. Cette page a pour but de centraliser des informations 
-                sur sa vie et ses projets.
-            </p>
-            <div class="bio-infos">
-                <ul>
-                    <li>Date de naissance&nbsp;: à compléter</li>
-                    <li>Ville actuelle&nbsp;: à compléter</li>
-                    <li>Centres d'intérêt&nbsp;: technologie, culture asiatique, photographie, etc.</li>
-                </ul>
-            </div>
-        </div>
-        <div class="bio-portrait">
-            <!-- Remplace src par une vraie photo de Kevin -->
-            <img src="images/kevin-sahur.jpg" alt="Photo de Kevin Sahur">
-            <p>Portrait de Kevin Sahur</p>
-        </div>
+    <nav>
+        <a href="#about">About</a>
+        <a href="#roster">Roster</a>
+        <a href="#contact">Contact</a>
+    </nav>
+
+    <section class="hero">
+        <h1>Welcome to Only Hands Elite</h1>
+        <p>Where skill meets teamwork. Join the next generation of basketball greatness.</p>
     </section>
 
-    <section id="infos" class="galerie">
-        <h2 class="section-titre">Informations sur Kevin</h2>
-        <p>
-            Ajoute ici des sections détaillées sur la biographie de Kevin, son parcours scolaire, 
-            ses expériences professionnelles et ses projets en cours.
-        </p>
-        <ul>
-            <li>Biographie détaillée.</li>
-            <li>Chronologie des projets importants.</li>
-            <li>Liens vers ses réseaux sociaux ou travaux publics.</li>
-        </ul>
+    <section id="about" class="section">
+        <h2>About the Team</h2>
+        <p>Founded in 2025, Only Hands Elite is a competitive basketball club dedicated to developing elite players on and off the court. Our mission is to combine athletic excellence with community leadership.</p>
     </section>
 
-    <section id="photos" class="galerie">
-        <h2 class="section-titre">Galerie de photos</h2>
-        <p>
-            Voici un espace dédié aux photos, par exemple des photos de personnes asiatiques, 
-            de voyages en Chine ou dans d'autres pays d'Asie.
-        </p>
-
-        <div class="galerie-grid">
-            <!-- Remplace les src par tes vraies images -->
-            <div class="galerie-item">
-                <img src="images/chine-1.jpg" alt="Photo 1 - scène de rue en Asie">
-                <p>Scène de rue dans une grande ville asiatique.</p>
+    <section id="roster" class="section">
+        <h2>Team Roster</h2>
+        <div class="roster">
+            <div class="player-card">
+                <h3>John "Buckets" Davis</h3>
+                <p>Position: Point Guard</p>
+                <p>#1</p>
             </div>
-            <div class="galerie-item">
-                <img src="images/chine-2.jpg" alt="Photo 2 - paysage asiatique">
-                <p>Paysage de montagne et temple traditionnel.</p>
+            <div class="player-card">
+                <h3>Marcus Hill</h3>
+                <p>Position: Shooting Guard</p>
+                <p>#13</p>
             </div>
-            <div class="galerie-item">
-                <img src="images/chine-3.jpg" alt="Photo 3 - portrait">
-                <p>Portrait d'une personne en tenue traditionnelle.</p>
-            </div>
-            <div class="galerie-item">
-                <img src="images/chine-4.jpg" alt="Photo 4 - ville moderne">
-                <p>Vue nocturne d'une métropole asiatique.</p>
+            <div class="player-card">
+                <h3>Leo Carter</h3>
+                <p>Position: Center</p>
+                <p>#23</p>
             </div>
         </div>
     </section>
 
-    <section id="contact" class="galerie">
-        <h2 class="section-titre">Contact</h2>
-        <p>
-            Pour toute question ou suggestion à propos de Kevin Sahur ou du site Le Sahur, 
-            tu peux ajouter ici un formulaire ou une adresse e-mail.
-        </p>
-        <p>
-            Exemple&nbsp;: <a href="mailto:contact@lesahur.com">contact@lesahur.com</a>
-        </p>
+    <section id="contact" class="section">
+        <h2>Contact Us</h2>
+        <p>Email: <a href="mailto:info@onlyhandselite.com">info@onlyhandselite.com</a></p>
+        <p>Follow us for updates and tryout info!</p>
     </section>
-</main>
 
-<footer>
-    <p>&copy; 2026 Le Sahur - Tous droits réservés.</p>
-    <p>Site personnel de référence sur Kevin Sahur.</p>
-</footer>
+    <footer>
+        <p>© 2026 Only Hands Elite Basketball Club. All rights reserved.</p>
+    </footer>
 
 </body>
 </html>
