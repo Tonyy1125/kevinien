@@ -10,15 +10,17 @@
             padding: 0;
             box-sizing: border-box;
         }
+
         body {
             font-family: 'Arial', sans-serif;
             line-height: 1.6;
-            color: #fff;
-            background: linear-gradient(135deg, #0c0c0c 0%, #1a1a2e 50%, #16213e 100%);
+            color: #1f2933;
+            background: #0b1020;
             overflow-x: hidden;
         }
+
         header {
-            background: rgba(0,0,0,0.8);
+            background: rgba(10, 14, 30, 0.9);
             padding: 1rem 0;
             position: fixed;
             width: 100%;
@@ -26,6 +28,7 @@
             z-index: 1000;
             backdrop-filter: blur(10px);
         }
+
         nav {
             display: flex;
             justify-content: space-between;
@@ -34,24 +37,30 @@
             margin: 0 auto;
             padding: 0 2rem;
         }
+
         .logo {
             font-size: 1.8rem;
-            color: #00ff88;
+            color: #4a8bdf;
             text-decoration: none;
         }
+
         .nav-links {
             display: flex;
             list-style: none;
         }
+
         .nav-links a {
-            color: white;
+            color: #e5edf1;
             text-decoration: none;
             margin-left: 2rem;
             transition: color 0.3s;
         }
+
         .nav-links a:hover {
-            color: #ff00ff;
+            color: #c5adc5;
         }
+
+        /* HERO plus doux */
         .hero {
             height: 100vh;
             display: flex;
@@ -60,47 +69,46 @@
             align-items: center;
             text-align: center;
             padding: 0 2rem;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><defs><radialGradient id="g" cx="50%" cy="50%"><stop offset="0%" stop-color="%2300ff88"/><stop offset="50%" stop-color="%23ff0080"/><stop offset="100%" stop-color="%2300ffff"/></radialGradient></defs><rect width="100%" height="100%" fill="url(%23g)"/><circle cx="200" cy="200" r="50" fill="%23fff" opacity="0.3"/><circle cx="800" cy="800" r="30" fill="%23ff0" opacity="0.4"/></svg>') center/cover;
-            color: white;
+            background: radial-gradient(circle at top left, #effafd 0%, #b2b5e0 40%, #4a8bdf 100%);
+            color: #1f2933;
         }
+
         .hero h1 {
-            font-size: 4rem;
+            font-size: 3.5rem;
             margin-bottom: 1rem;
-            background: linear-gradient(45deg, #00ff88, #ff00ff, #00ffff);
+            background: linear-gradient(45deg, #4a8bdf, #c5adc5);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            animation: glow 2s ease-in-out infinite alternate;
         }
-        @keyframes glow {
-            from { text-shadow: 0 0 20px #00ff88; }
-            to { text-shadow: 0 0 30px #ff00ff; }
+
+        .hero p {
+            max-width: 650px;
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            color: #243447;
         }
+
         .btn {
             display: inline-block;
             padding: 1rem 2rem;
-            margin: 1rem;
-            background: linear-gradient(45deg, #ff0080, #00ff88, #0080ff, #ff8000);
-            background-size: 300% 300%;
-            color: white;
+            margin: 0.5rem;
+            background: linear-gradient(45deg, #4a8bdf, #a8d5e3);
+            background-size: 200% 200%;
+            color: #ffffff;
             text-decoration: none;
-            border-radius: 50px;
+            border-radius: 999px;
             font-weight: bold;
-            transition: all 0.5s;
+            transition: all 0.4s;
             position: relative;
             overflow: hidden;
-            animation: rainbow 3s ease infinite;
         }
-        @keyframes rainbow {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
+
         .btn:hover {
-            transform: translateY(-10px) scale(1.05);
-            box-shadow: 0 20px 40px rgba(255,0,128,0.6), 0 0 50px rgba(0,255,136,0.5);
-            animation: none;
-            background: linear-gradient(45deg, #ff00ff, #00ffff);
+            transform: translateY(-6px) scale(1.03);
+            box-shadow: 0 12px 30px rgba(74, 139, 223, 0.45);
+            background-position: 100% 0;
         }
+
         .btn::before {
             content: '';
             position: absolute;
@@ -108,58 +116,77 @@
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.5), transparent);
             transition: left 0.5s;
         }
+
         .btn:hover::before {
             left: 100%;
         }
+
         section {
             padding: 5rem 2rem;
             max-width: 1200px;
             margin: 0 auto;
         }
+
         h2 {
-            font-size: 3rem;
+            font-size: 2.5rem;
             text-align: center;
             margin-bottom: 3rem;
-            background: linear-gradient(45deg, #00ff88, #ff00ff);
+            background: linear-gradient(45deg, #4a8bdf, #c5adc5);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
+
         .features {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
             gap: 2rem;
         }
+
         .feature {
-            background: rgba(255,255,255,0.1);
+            background: rgba(13, 17, 43, 0.9);
             padding: 2rem;
             border-radius: 20px;
             backdrop-filter: blur(10px);
-            border: 1px solid rgba(255,255,255,0.2);
+            border: 1px solid rgba(255,255,255,0.06);
             text-align: center;
-            transition: transform 0.3s;
-            color: #ffffff; /* texte bien blanc dans les petites cases */
+            transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+            color: #e5edf1;
         }
+
         .feature h3 {
-            margin-bottom: 0.5rem;
-            color: #ffffff;
+            margin-bottom: 0.7rem;
+            color: #effafd;
         }
+
         .feature p {
-            color: #ffffff;
+            color: #c7d4e2;
+            font-size: 0.95rem;
         }
+
         .feature:hover {
-            transform: translateY(-10px);
+            transform: translateY(-8px);
+            box-shadow: 0 18px 40px rgba(12, 17, 40, 0.8);
+            border-color: rgba(74, 139, 223, 0.5);
         }
+
+        .cta-center {
+            text-align: center;
+            margin-top: 3rem;
+        }
+
         footer {
             text-align: center;
             padding: 2rem;
-            color: #aaa;
-            background: rgba(0,0,0,0.5);
+            color: #9aa5b1;
+            background: #070a16;
         }
+
         @media (max-width: 768px) {
-            .hero h1 { font-size: 2.5rem; }
+            .hero h1 { font-size: 2.4rem; }
+            .hero { padding-top: 5rem; }
             .nav-links { display: none; }
             .features { grid-template-columns: 1fr; }
         }
@@ -179,48 +206,50 @@
     </header>
 
     <section id="accueil" class="hero">
-        <h1>Bienvenue sur IA Info</h1>
-        <p>Découvrez l'univers de l'Intelligence Artificielle : innovations, applications et avenir.</p>
-        <a href="#fonctionnement" class="btn">Explorer l'IA</a>
-        <a href="#contact" class="btn">Commencer</a>
+        <h1>Comprendre l’Intelligence Artificielle</h1>
+        <p>Un espace clair et pédagogique pour découvrir ce qu’est l’IA, comment elle fonctionne et comment elle transforme notre quotidien.</p>
+        <div>
+            <a href="#fonctionnement" class="btn">Découvrir le fonctionnement</a>
+            <a href="#avantages" class="btn">Voir les usages</a>
+        </div>
     </section>
 
     <section id="fonctionnement">
-        <h2>Comment fonctionne l'IA ?</h2>
+        <h2>Comment fonctionne l’IA ?</h2>
         <div class="features">
             <div class="feature">
-                <h3>Apprentissage Automatique</h3>
-                <p>L'IA apprend des données pour prédire et décider, comme un cerveau numérique.</p>
+                <h3>Apprentissage automatique</h3>
+                <p>Les algorithmes apprennent à partir de grandes quantités de données pour reconnaître des modèles et faire des prédictions utiles.</p>
             </div>
             <div class="feature">
-                <h3>Réseaux Neuronaux</h3>
-                <p>Inspirés du cerveau humain, ils traitent des informations complexes en couches.</p>
+                <h3>Réseaux neuronaux</h3>
+                <p>Inspirés du cerveau humain, ils traitent l’information en couches successives pour résoudre des problèmes complexes.</p>
             </div>
             <div class="feature">
                 <h3>Deep Learning</h3>
-                <p>Des algorithmes profonds qui excellent en reconnaissance d'images et de langage.</p>
+                <p>Des réseaux très profonds qui excellent dans la vision par ordinateur, la voix, le texte et de nombreuses autres tâches.</p>
             </div>
         </div>
     </section>
 
     <section id="avantages">
-        <h2>Avantages de l'IA</h2>
+        <h2>Applications et avantages</h2>
         <div class="features">
             <div class="feature">
-                <h3>Efficacité</h3>
-                <p>Automatise les tâches répétitives, libérant du temps pour l'innovation.</p>
+                <h3>Santé</h3>
+                <p>Aide au diagnostic, analyse d’images médicales, personnalisation des traitements et suivi des patients en temps réel.</p>
             </div>
             <div class="feature">
-                <h3>Précision</h3>
-                <p>Réduit les erreurs humaines dans la médecine, la finance et plus.</p>
+                <h3>Entreprise</h3>
+                <p>Automatisation des tâches, analyse prédictive, amélioration de la relation client et optimisation des processus.</p>
             </div>
             <div class="feature">
-                <h3>Innovation</h3>
-                <p>Ouvre des portes à des technologies comme les voitures autonomes.</p>
+                <h3>Quotidien</h3>
+                <p>Assistants vocaux, recommandations personnalisées, traduction automatique et outils créatifs accessibles à tous.</p>
             </div>
         </div>
-        <div style="text-align: center; margin-top: 3rem;">
-            <a href="#" class="btn">En Savoir Plus</a>
+        <div class="cta-center">
+            <a href="#contact" class="btn">Envie d’en savoir plus ?</a>
         </div>
     </section>
 
